@@ -109,6 +109,5 @@ A Flutter developer focused on crafting high-quality, visually striking mobile a
 **Tech Stack**: Flutter, Firebase, Node.js  
 - Features: Real-time chat, content sharing, and collaborative tools.  
 
----
 
 
