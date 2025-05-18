@@ -1,6 +1,4 @@
----
-layout: default
----
+
 
 # Montassar Zekri  
 **Software Engineer**  
@@ -114,4 +112,4 @@ A Flutter developer focused on crafting high-quality, visually striking mobile a
 
 ---
 
-*"The progress bar reflects my journey—milestones achieved and goals ahead."*
+
