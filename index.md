@@ -1,6 +1,5 @@
 
 
-# Montassar Zekri  
 **Software Engineer**  
 Mid-Senior Mobile App Developer (Flutter/Dart)  
 <span style="color:gray">📍 Tunisia | Remote</span>  
