@@ -3,30 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montassar E. - Resume</title>
+    <title>Montassar Zekri - Mobile Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #e5e5e5;
+            --text-muted: #b3b3b3;
+            --border: #333333;
+            --accent: #ffffff;
+            --hover: #2a2a2a;
+        }
+
         body {
-            background-color: #000; /* Black background */
-            color: #f0f0f0; /* Light text */
-            font-family: sans-serif; /* Example font */
-            padding: 20px; /* Add some padding around the content */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            min-height: 100vh;
         }
-        a {
-            color: #add8e6; /* Light blue for links */
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            min-height: 100vh;
         }
-        /* You would add more CSS here to style the rest of your resume */
+
+        .header {
+            padding: 4rem 2rem 2rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        .content {
+            padding: 0 2rem 2rem 2rem;
+        }
+
+        .section {
+            margin: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--text-primary);
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border-left: 3px solid var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            background: var(--hover);
+            transform: translateX(4px);
+        }
+
+        .job-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .company {
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .duration {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h4 {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-list {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .degree {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .institution {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 1rem;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item:hover {
+            color: var(--text-primary);
+            background: var(--bg-card);
+            border-color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            width: 16px;
+            text-align: center;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .contact-item:hover i {
+            color: var(--text-primary);
+        }
+
+        .project-stats {
+            margin-top: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .project-description {
+            margin-top: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .languages {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+            }
+            
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            
+            .content {
+                padding: 0 1.5rem 2rem 1.5rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Subtle scroll indicator */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
     </style>
 </head>
 <body>
-    <h1>Software Engineer</h1>
-    <p>Mid-Senior Mobile App Developer (Flutter/Dart)</p>
-    <p>📍 Tunisia | Remote</p>
-    <p><a href="mailto:montassarezekri@gmail.com">📧 montassarezekri@gmail.com</a></p>
-    <p><a href="tel:+21624575883">📱 +216 24 575 883</a></p>
-    <p><a href="/montassarezekri">💼 LinkedIn</a></p>
-    <p><a href="https://github.com/módare">🐙 GitHub</a></p>
-    <hr>
-    <h2>🚀 About Me</h2>
-    <p>A Flutter developer focused on crafting high-quality, visually striking mobile apps with clean, efficient code. Passionate about solving complex challenges, adopting new technologies, and contributing to impactful projects at scale.</p>
-    </body>
+    <div class="container">
+        <header class="header">
+            <h1 class="name">Montassar Zekri</h1>
+            <p class="title">Mid-Senior Mobile App Developer Flutter / Dart</p>
+            <p class="subtitle">A Flutter developer who trying to create high-quality, visually striking mobile apps with a knack for clean, efficient code. Always on the lookout for new challenges and eager to pick up new skills and driven to push boundaries and keep things fresh.</p>
+        </header>
+
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Mobile Developer</h3>
+                    <p class="company">Keyrus MEA, Tunis, Tunisia</p>
+                    <p class="duration">April 2024 - Present</p>
+                    <ul class="achievements">
+                        <li>Orange Maxit: Delivered key features for Orange's SuperApp, enhancing the experience for millions of users</li>
+                        <li>Agile Workflow: Contributed to sprints and retrospectives, ensuring timely delivery of quality code</li>
+                        <li>Scalable Code: Helped maintain a modular, scalable Flutter codebase</li>
+                        <li>Team Collaboration: Worked closely with cross-functional teams to ensure a seamless app experience</li>
+                        <li>Global Project: Managed the complexities of a large-scale, international project</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Mobile Developer</h3>
+                    <p class="company">Mezcalmos Inc, Remote</p>
+                    <p class="duration">November 2021 - November 2023</p>
+                    <ul class="achievements">
+                        <li>Flutter Development: Developed mobile features with a focus on a seamless user experience</li>
+                        <li>Backend Contributions: Handled backend tasks, ensuring product functionality and integration</li>
+                        <li>Remote Collaboration: Effectively communicated and coordinated in a remote team environment</li>
+                        <li>Versatility & Pressure Management: Adapted across the tech stack, managing high demands and typical pressure of a startup</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Backend Instructor</h3>
+                    <p class="company">GoMyCode, Gabes, Tunisia</p>
+                    <p class="duration">October 2021 - September 2023</p>
+                    <ul class="achievements">
+                        <li>Taught MERN Stack: Guided students through backend development with hands-on MERN stack training</li>
+                        <li>Course Design: Developed and presented engaging course materials focused on practical skills</li>
+                        <li>Student Mentorship: Offered support and feedback, helping students build and deploy their projects</li>
+                        <li>Tech Skills: Applied extensive knowledge of the MERN stack to enrich the learning experience</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">Bachelor's degree in Computer Science</h3>
+                    <p class="institution">ISIMG, Gabes, Tunisia (October 2018 - June 2021)</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3 class="degree">Graphic Design</h3>
+                    <p class="institution">ISAAM Mahdia, Tunisia (October 2017 - June 2018)</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3 class="degree">Introduction to User Experience Design</h3>
+                    <p class="institution">Coursera Certification, Georgia Institute of Technology</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Projects</h2>
+                
+                <div class="project-item">
+                    <h3 class="job-title">Moyenne</h3>
+                    <p class="company">Available for iOS / Android</p>
+                    <p class="project-stats">+50K Playstore Downloads • +5K AppStore Downloads</p>
+                    <p class="project-description">
+                        Moyenne is an ongoing side project that focuses on creating a community-based content sharing platform for high school students. The platform aims to help students communicate, collaborate and share knowledge with one another.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>App Development</h4>
+                        <div class="skill-list">
+                            Flutter / Dart (Main Stack)<br>
+                            Native Android Kotlin (Basic)<br>
+                            Native iOS Swift (Basic)
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Backend</h4>
+                        <div class="skill-list">
+                            PostgreSQL<br>
+                            GraphQL<br>
+                            JavaScript<br>
+                            Node.js<br>
+                            Hasura<br>
+                            Firebase
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Design</h4>
+                        <div class="skill-list">
+                            UI/UX Design<br>
+                            Figma
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages">Arabic • English • French</div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Contact</h2>
+                
+                <div class="contact-grid">
+                    <a href="mailto:montassarezekri@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>montassarezekri@gmail.com</span>
+                    </a>
+                    <a href="tel:+21624575883" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+216 24 575 883</span>
+                    </a>
+                    <a href="https://linkedin.com/in/montassarezekri" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/montassarezekri</span>
+                    </a>
+                    <a href="https://github.com/montassarzekri" target="_blank" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>github.com/montassarzekri</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
 </html>
